@@ -1,0 +1,18 @@
+{
+  "name": "serba-serbi-hmm",
+  "version": "1.0.0",
+  "main": "src/index.cjs",
+  "repository": "https://github.com/rayhankinan/serba-serbi-hmm.git",
+  "author": "rayhankinan <rayhankinan@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "node-gyp": "^10.0.1"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "3.13.0",
+    "hidden-markov-model-tf": "^4.0.0"
+  },
+  "scripts": {
+    "dev": "node src/index.cjs"
+  }
+}
