@@ -1,6 +1,6 @@
 const assert = require("assert");
 const tf = require("@tensorflow/tfjs-node");
-const HMM = require("hidden-markov-model-tf");
+const HMM = require("hidden-markov-model-tf"); // JavaScript only (CommonJS)
 
 const [observations, time, states, dimensions] = [5, 7, 3, 2];
 
@@ -40,8 +40,11 @@ async function main() {
     ]),
   });
 
+  // Define seed
+  const seed = 42;
+
   // Sample data
-  const sample = hmm.sample({ observations, time });
+  const sample = hmm.sample({ observations, time, seed });
   assert.deepEqual(sample.states.shape, [observations, time]);
   assert.deepEqual(sample.emissions.shape, [observations, time, dimensions]);
 
@@ -49,7 +52,9 @@ async function main() {
   const data = sample.emissions;
 
   // Fit model with data
-  const results = await hmm.fit(data);
+  const results = await hmm.fit(data, {
+    seed,
+  });
   assert(results.converged);
 
   // Predict hidden state indices
