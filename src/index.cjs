@@ -6,12 +6,16 @@ const [observations, time, states, dimensions] = [5, 7, 3, 2];
 
 // Configure model
 const hmm = new HMM({
-  states: states,
-  dimensions: dimensions,
+  states,
+  dimensions,
 });
 
 async function main() {
   // Set parameters
+  // pi: initial probability distribution of states
+  // A: transition matrix
+  // mu: mean of Gaussian emissions
+  // Sigma: covariance of Gaussian emissions
   await hmm.setParameters({
     pi: tf.tensor([0.15, 0.2, 0.65]),
     A: tf.tensor([
